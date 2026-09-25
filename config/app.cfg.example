@@ -1,0 +1,6 @@
+%env = (
+  scope => ['./data/photos'],
+  cloud => './data/backup',
+  ext => ['jpg', 'jpeg', 'png', 'nef'],
+  master_db => './db/telescope.db',
+);

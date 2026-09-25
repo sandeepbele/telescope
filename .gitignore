@@ -1,0 +1,7 @@
+.DS_Store
+config/app.cfg
+data/
+db/
+*.db
+*.sqlite
+*.sqlite3
