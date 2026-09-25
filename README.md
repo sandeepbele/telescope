@@ -1,15 +1,38 @@
 # Telescope
 
-> **Archived project.** Telescope is an early photo-cataloging prototype from 2017. It is no longer maintained and does not have a finished end-to-end workflow.
+> **Archived project.** Telescope is an early photo-cataloging prototype from 2017. It is no longer maintained, and the end-to-end workflow was never completed.
 
-I started Telescope to make sense of photos scattered across folders and devices. The idea was to walk the files on disk, read camera and date information from their EXIF metadata, and build a catalog that could later help organize and back up the originals.
+**A local photo catalog built from files and EXIF metadata.**
 
-The repository contains the beginnings of that workflow:
+Telescope started from a simple problem: photos accumulate across folders, disks, and devices, while much of the information needed to organize them is already embedded in the files themselves.
 
-- `FSWalker.pm` finds files recursively and can filter them by extension.
-- `ExifReader.pm` reads selected image metadata with ExifTool.
-- `DBUtil.pm` explores storing a catalog in SQLite.
-- `App.pl` sketches a batch that scans, extracts metadata, moves files, and records progress. Several of those steps are placeholders.
-- `run.pl` is an exploratory entry point, not a finished application.
+The idea was to scan photo collections, extract camera and timestamp information from EXIF metadata, and build a searchable catalog that could eventually support organization, deduplication, and backup workflows.
 
-The original sample photos and local database are omitted. `config/app.cfg.example` shows the shape of the old local configuration without paths from my machine. The source folder had no Git repository, so this public repository begins with a new commit rather than a reconstructed history.
+## How it was intended to work
+
+The basic pipeline was:
+
+1. recursively scan one or more directories for image files
+2. read metadata from each image using ExifTool
+3. normalize useful fields such as capture time and camera information
+4. store the resulting catalog in SQLite
+5. use that catalog to organize or move the original files
+
+The repository contains pieces of that workflow, but not a completed application.
+
+## Repository structure
+
+- `FSWalker.pm` — recursively discovers files and filters them by extension
+- `ExifReader.pm` — extracts selected EXIF metadata using ExifTool
+- `DBUtil.pm` — experiments with storing photo metadata in SQLite
+- `App.pl` — sketches the batch workflow for scanning, extracting metadata, moving files, and recording progress
+- `run.pl` — exploratory entry point used while developing the prototype
+- `config/app.cfg.example` — example configuration without machine-specific paths
+
+Some steps in `App.pl` remain placeholders.
+
+## Project status
+
+Telescope is preserved as an archive of the original experiment rather than as a maintained photo-management tool.
+
+The sample photos and local database used during development are not included, and the complete scan-to-catalog workflow has not been revalidated on a modern environment.
